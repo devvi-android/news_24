@@ -2,7 +2,7 @@ package com.example.news_24.app.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.news_24.app.Article
+import com.example.news_24.app.models.Article
 
 @Dao
 interface ArticleDao {
