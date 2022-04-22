@@ -1,4 +1,4 @@
-package com.example.news_24.ui
+package com.example.news_24.app.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         bottomNavigationView = findViewById(R.id.navigation_view)
-        bottomNavigationView.setupWithNavController(bottomNavigationView.findNavController())
+        val navController = findNavController(R.id.fragment_container)
+        bottomNavigationView.setupWithNavController(navController)
     }
 }
