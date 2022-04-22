@@ -1,6 +1,14 @@
-package com.example.news_24.app
+package com.example.news_24.app.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(
+    tableName = "article"
+)
 data class Article(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
     val author: String,
     val content: String,
     val description: String,
