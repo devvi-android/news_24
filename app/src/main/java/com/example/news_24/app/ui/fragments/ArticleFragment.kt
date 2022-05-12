@@ -39,7 +39,7 @@ class ArticleFragment : Fragment() {
 
         val article = args.article
         webView = view.findViewById(R.id.webView)
-        fab = view.findViewById(R.id.fab)
+        fab = view.findViewById(R.id.floating_action_button)
 
         webView.apply {
             webViewClient = WebViewClient()
