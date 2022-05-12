@@ -1,4 +1,4 @@
-package com.example.news_24.app.adapters
+package com.example.news_24.app.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +37,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         )
     }
 
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
         holder.itemView.apply {
@@ -46,7 +49,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
             findViewById<TextView>(R.id.tvDescription).text = article.description
             findViewById<TextView>(R.id.tvPublishedAt).text = article.publishedAt
 
-            setOnItemClickListener {
+            setOnClickListener {
                 onItemClickListener?.let { it(article) }
             }
         }
@@ -56,9 +59,5 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     fun setOnItemClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
-    }
-
-    override fun getItemCount(): Int {
-        return differ.currentList.size
     }
 }

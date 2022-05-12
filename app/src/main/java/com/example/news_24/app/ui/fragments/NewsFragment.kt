@@ -6,26 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import androidx.core.view.isVisible
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.news_24.R
-import com.example.news_24.app.adapters.NewsAdapter
+import com.example.news_24.app.ui.adapters.NewsAdapter
 import com.example.news_24.app.ui.MainActivity
-import com.example.news_24.app.ui.NewsViewModel
 import com.example.news_24.app.util.Resource
-import okhttp3.internal.wait
-import java.util.*
+import com.example.news_24.app.ui.NewsViewModel as NewsViewModel1
 
 class NewsFragment : Fragment() {
 
-    lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter: NewsAdapter
-    lateinit var rvBreakingNews: RecyclerView
-    lateinit var paginationProgressBar: ProgressBar
+    lateinit var viewModel: NewsViewModel1
+    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var rvBreakingNews: RecyclerView
+    private lateinit var paginationProgressBar: ProgressBar
 
-    var TAG = "NewsFragment"
+    private var TAG = "NewsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +40,16 @@ class NewsFragment : Fragment() {
         rvBreakingNews = view.findViewById(R.id.rvBreakingNews)
         paginationProgressBar = view.findViewById(R.id.paginationProgressBar)
         setupRecyclerView()
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_newsFragment_to_articleFragment,
+                bundle
+            )
+        }
 
         viewModel.breakingNews.observe(viewLifecycleOwner, androidx.lifecycle.Observer { response ->
             when(response) {
