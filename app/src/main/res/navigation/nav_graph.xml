@@ -11,12 +11,8 @@
         android:label="fragment_news"
         tools:layout="@layout/fragment_news">
         <action
-            android:id="@+id/action_newsFragment_to_articleFragment2"
-            app:destination="@id/articleFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            android:id="@+id/action_newsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
     </fragment>
 
     <fragment
@@ -26,11 +22,7 @@
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_articleFragment"
-            app:destination="@id/articleFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:destination="@id/articleFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookmarksFragment"
@@ -38,17 +30,17 @@
         android:label="fragment_bookmarks"
         tools:layout="@layout/fragment_bookmarks">
         <action
-            android:id="@+id/action_bookmarksFragment_to_articleFragment3"
-            app:destination="@id/articleFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            android:id="@+id/action_bookmarksFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
     </fragment>
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.example.news_24.app.ui.fragments.ArticleFragment"
         android:label="fragment_article"
-        tools:layout="@layout/fragment_article" />
+        tools:layout="@layout/fragment_article" >
+        <argument
+            android:name="article"
+            app:argType="com.example.news_24.app.models.Article" />
+    </fragment>
 
 </navigation>
